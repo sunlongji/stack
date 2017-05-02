@@ -1,0 +1,36 @@
+import java.util.*;
+
+@SuppressWarnings("serial")
+public class MyStack<E> {
+	private E[] arr;
+	private int top=-1;
+	private int size;
+	@SuppressWarnings("unchecked")
+	MyStack(){
+		//arr=new E[100];
+		arr=(E[]) new Object[size];
+	}
+	@SuppressWarnings("unchecked")
+	MyStack(int initialSize){
+		//arr=new E[initialSize];
+		arr=(E[]) new Object[initialSize];
+	}
+	@SuppressWarnings("unchecked")
+	public E push(E item) throws StackFullException {
+		if(top==size-1)	throw new StackFullException();
+		arr[++top]=item;
+		return item;
+	}
+	@SuppressWarnings("unchecked")
+	public E pop() throws StackEmptyException {
+		if(top==-1)	throw new StackEmptyException();
+		return arr[top--];
+	}
+	public E peek() throws StackEmptyException{
+		if (isEmpty()) throw new StackEmptyException();
+		return arr[top];
+	}
+	public boolean isEmpty(){
+		return top==-1;
+	}
+}
